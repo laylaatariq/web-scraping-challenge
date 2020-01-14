@@ -137,8 +137,9 @@ def scrape():
     
     #Adding the list of dictionary to the dict
     scrapped_data['hemisphere'] = hemisphere_image_urls
+
     #Quitting the browser after all the scrapping has been done
     browser.quit()
 
-scrape()
-print(scrapped_data)
+    #Returning the data
+    return scrapped_data
