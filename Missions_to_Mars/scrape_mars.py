@@ -31,8 +31,8 @@ def scrape():
     scrapped_data['news_title'] = news_title
 
     #Getting the body of the news article
-    body = soup.body.find('div', class_='article_teaser_body')
-    news_p = body.get_text()
+    news_b = soup.body.find('div', class_='article_teaser_body')
+    news_p = news_b.get_text()
 
     #Adding the body of the article into the dictionary
     scrapped_data['news_body'] = news_p
@@ -120,12 +120,9 @@ def scrape():
 
     hemi_soup = hemi.body.find('div', class_='results')
 
-    keys = ['title', 'img_url']
-    new_list = []
-    t_list = []
-    u_list = []
-    for x in hemi_soup.find_all('div', class_='description'):
-        urls = x.find_all('a')
+
+    for j in hemi_soup.find_all('div', class_='description'):
+        urls = j.find_all('a')
         title = [t.text for t in urls]
         title = ''.join(title)
         link = [u.get('href') for u in urls]
